@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "SyncSubscriptionSubscriptions",
+  "additionalProperties": true,
+  "properties": {
+    "Timestamp": {
+      "description": "Row version used to retrieve new or changed records",
+      "type": ["null", "integer"]
+    },
+    "BlockEntry": {
+      "description": "Indicates if subscription is blocked for time cost entry",
+      "type": ["null", "boolean"]
+    },
+    "CancellationDate": {
+      "description": "Date of cancellation",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Classification": {
+      "description": "ID of the classification",
+      "type": ["null", "string"]
+    },
+    "ClassificationCode": {
+      "description": "Code of the classification",
+      "type": ["null", "string"]
+    },
+    "ClassificationDescription": {
+      "description": "Description of the classification",
+      "type": ["null", "string"]
+    },
+    "Created": {
+      "description": "Creation date",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Creator": {
+      "description": "ID of creator",
+      "type": ["null", "string"]
+    },
+    "CreatorFullName": {
+      "description": "Name of creator",
+      "type": ["null", "string"]
+    },
+    "Currency": {
+      "description": "Currency code",
+      "type": ["null", "string"]
+    },
+    "CustomerPONumber": {
+      "description": "Purchase order number of customer",
+      "type": ["null", "string"]
+    },
+    "Description": {
+      "description": "Description of the subscription",
+      "type": ["null", "string"]
+    },
+    "Division": {
+      "description": "Division code",
+      "type": ["null", "integer"]
+    },
+    "EndDate": {
+      "description": "Date and time when the subscription ends",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "EntryID": {
+      "description": "Primary key",
+      "type": ["null", "string"]
+    },
+    "InvoiceDay": {
+      "description": "Day of the month or weekday (0 = Monday) when the invoice is sent",
+      "type": ["null", "integer"]
+    },
+    "InvoicedTo": {
+      "description": "Date the subscription invoice was sent",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "InvoiceTo": {
+      "description": "Account the subscription is invoiced to",
+      "type": ["null", "string"]
+    },
+    "InvoiceToContactPerson": {
+      "description": "ID of the contact person of the invoice account",
+      "type": ["null", "string"]
+    },
+    "InvoiceToContactPersonFullName": {
+      "description": "Name of the contact person of the invoice account",
+      "type": ["null", "string"]
+    },
+    "InvoiceToName": {
+      "description": "Name of the invoice account",
+      "type": ["null", "string"]
+    },
+    "InvoicingStartDate": {
+      "description": "Date that invoicing starts",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Modified": {
+      "description": "Last modified date",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Modifier": {
+      "description": "ID of modifier",
+      "type": ["null", "string"]
+    },
+    "ModifierFullName": {
+      "description": "Name of modifier",
+      "type": ["null", "string"]
+    },
+    "Notes": {
+      "description": "Remarks",
+      "type": ["null", "string"]
+    },
+    "Number": {
+      "description": "Subscription number",
+      "type": ["null", "integer"]
+    },
+    "OrderedBy": {
+      "description": "ID of the ordering account (subscriber)",
+      "type": ["null", "string"]
+    },
+    "OrderedByContactPerson": {
+      "description": "ID of the contact person of the ordering account",
+      "type": ["null", "string"]
+    },
+    "OrderedByContactPersonFullName": {
+      "description": "Name of the contact person of the ordering account",
+      "type": ["null", "string"]
+    },
+    "OrderedByName": {
+      "description": "Name of the ordering account",
+      "type": ["null", "string"]
+    },
+    "PaymentCondition": {
+      "description": "Payment condition code",
+      "type": ["null", "string"]
+    },
+    "PaymentConditionDescription": {
+      "description": "Description of the payment condition",
+      "type": ["null", "string"]
+    },
+    "Printed": {
+      "description": "Indicates if the subscription is printed",
+      "type": ["null", "boolean"]
+    },
+    "Project": {
+      "description": "ID of the linked project",
+      "type": ["null", "string"]
+    },
+    "ReasonCancelled": {
+      "description": "ID of the cancellation reason",
+      "type": ["null", "string"]
+    },
+    "ReasonCancelledCode": {
+      "description": "Code of the cancellation reason",
+      "type": ["null", "string"]
+    },
+    "ReasonCancelledDescription": {
+      "description": "Description of the cancellation reason",
+      "type": ["null", "string"]
+    },
+    "StartDate": {
+      "description": "Start date of the subscription",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "SubscriptionType": {
+      "description": "ID of the subscription type",
+      "type": ["null", "string"]
+    },
+    "SubscriptionTypeCode": {
+      "description": "Code of the subscription type",
+      "type": ["null", "string"]
+    },
+    "SubscriptionTypeDescription": {
+      "description": "Description of the subscription type",
+      "type": ["null", "string"]
+    }
+  }
+}

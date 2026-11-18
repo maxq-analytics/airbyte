@@ -6,7 +6,21 @@ from unittest.mock import MagicMock
 
 import pytest
 import requests
-from source_exact.streams import ExactOtherStream, ExactSyncStream
+from airbyte_cdk.models import SyncMode
+from source_exact.streams import (
+    BudgetBudgets,
+    ExactOtherStream,
+    ExactSyncStream,
+    FinancialGLAccountClassificationMappings,
+    FinancialReceivablesList,
+    FinancialReportingBalance,
+    HRMDivisions,
+    OpeningbalanceCurrentYearAfterEntry,
+    SyncDeleted,
+    SyncFinancialTransactionLines,
+    SyncSubscriptionSubscriptionLines,
+    SyncSubscriptionSubscriptions,
+)
 
 
 class MyTestExactSyncStream(ExactSyncStream):
@@ -319,3 +333,54 @@ def test_parse_item__type_casting(config_oauth: dict):
 #     stream.cursor_field = "Modified"
 #
 #     assert stream._get_param_filter("2022-12-12T00:00:00+00:00") == "Modified gt datetime'2022-12-12T01:00:00'"
+
+
+@pytest.mark.parametrize(
+    "stream_class, expected_key",
+    [
+        (SyncSubscriptionSubscriptions, [["Division"], ["EntryID"]]),
+        (SyncSubscriptionSubscriptionLines, [["Division"], ["ID"]]),
+        (SyncFinancialTransactionLines, [["Division"], ["ID"]]),
+        (SyncDeleted, [["Division"], ["ID"]]),
+        (OpeningbalanceCurrentYearAfterEntry, [["Division"], ["ReportingYear"], ["GLAccount"]]),
+    ],
+)
+def test_primary_key_is_selected(config_oauth: dict, stream_class, expected_key):
+    stream = stream_class(config_oauth)
+    params = stream.request_params(None, {"division": "123"})
+
+    assert stream.as_airbyte_stream().source_defined_primary_key == expected_key
+    # Key fields must be in $select, otherwise Exact doesn't return them and dedup breaks
+    assert {k[0] for k in expected_key} <= set(params["$select"].split(","))
+
+
+@pytest.mark.parametrize(
+    "stream_class",
+    [
+        FinancialGLAccountClassificationMappings,
+        FinancialReceivablesList,
+        FinancialReportingBalance,
+        OpeningbalanceCurrentYearAfterEntry,
+    ],
+)
+def test_streams_without_modified_are_full_refresh_only(config_oauth: dict, stream_class):
+    stream = stream_class(config_oauth)
+    params = stream.request_params(None, {"division": "123"})
+
+    assert not stream.supports_incremental
+    assert "$orderby" not in params  # Exact rejects ordering on a field the endpoint doesn't have
+    assert "$filter" not in params
+
+
+def test_stream_with_modified_stays_incremental(config_oauth: dict):
+    stream = BudgetBudgets(config_oauth)
+
+    assert stream.supports_incremental
+    assert stream.request_params(None, {"division": "123"})["$orderby"] == "Modified asc"
+
+
+def test_divisions_called_once(config_oauth: dict):
+    stream = HRMDivisions({**config_oauth, "divisions": [1, 2, 3]})
+
+    assert stream.stream_slices(sync_mode=SyncMode.full_refresh) == [{"division": 1}]
+    assert stream.as_airbyte_stream().source_defined_primary_key == [["Code"]]

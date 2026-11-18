@@ -2,6 +2,7 @@
 
 import re
 from abc import ABC
+from functools import cached_property
 from typing import Any, Iterable, List, Mapping, MutableMapping, Optional
 
 import pendulum
@@ -113,7 +114,7 @@ class ExactStream(HttpStream, CheckpointMixin, ABC):
 
         division = str(stream_slice["division"])
         state = self._state_per_division.get(division, {})
-        cursor_value = state.get(self.cursor_field)
+        cursor_value = state.get(self.cursor_field) if self.cursor_field else None
 
         if cursor_value:
             params["$filter"] = self._get_param_filter(cursor_value)
@@ -313,7 +314,9 @@ class ExactSyncStream(ExactStream):
     """
 
     state_checkpoint_interval = 1000
-    primary_key = "Timestamp"
+    # Timestamp is a row version (changes on every edit), so it can't identify a record.
+    # Division is part of the key because GUIDs are not guaranteed unique across divisions.
+    primary_key = ["Division", "ID"]
     cursor_field = "Timestamp"
 
 
@@ -326,7 +329,12 @@ class ExactOtherStream(ExactStream):
 
     state_checkpoint_interval = 60
     primary_key = "ID"
-    cursor_field = "Modified"
+
+    @cached_property
+    def cursor_field(self) -> str | list[str]:
+        # Some endpoints (e.g. GLAccountClassificationMappings) have no Modified field: Exact rejects
+        # `$orderby=Modified`, so these streams are full refresh only ([] = no cursor, as in the CDK).
+        return "Modified" if "Modified" in self.get_json_schema()["properties"] else []
 
 
 class BudgetBudgets(ExactOtherStream):
@@ -345,8 +353,7 @@ class FinancialReceivablesList(ExactOtherStream):
     """Stream to sync the endpoint `read/financial/ReceivablesList`"""
 
     endpoint = "read/financial/ReceivablesList"
-    primary_key = "HID"
-    cursor_field = "HID"
+    primary_key = "HID"  # snapshot of open receivables: full refresh only (paid items disappear from it)
 
 
 class FinancialReportingBalance(ExactOtherStream):
@@ -361,10 +368,22 @@ class HRMDepartments(ExactOtherStream):
     endpoint = "hrm/Departments"
 
 
+class HRMDivisions(ExactOtherStream):
+    """Stream to sync the endpoint `hrm/Divisions` (all divisions the user can access)"""
+
+    endpoint = "hrm/Divisions"
+    primary_key = "Code"
+
+    def stream_slices(self, **kwargs) -> Iterable[Optional[Mapping[str, Any]]]:
+        # Every division returns the same list, so call it once
+        return [{"division": self._divisions[0]}]
+
+
 class OpeningbalanceCurrentYearAfterEntry(ExactOtherStream):
     """Stream to sync the endpoint `openingbalance/CurrentYear/AfterEntry`"""
 
     endpoint = "openingbalance/CurrentYear/AfterEntry"
+    primary_key = ["Division", "ReportingYear", "GLAccount"]  # this endpoint has no ID field
 
 
 class PayrollActiveEmployments(ExactOtherStream):
@@ -645,6 +664,7 @@ class SyncSubscriptionSubscriptions(ExactSyncStream):
     """Stream to sync the endpoint `sync/Subscription/Subscriptions`"""
 
     endpoint = "sync/Subscription/Subscriptions"
+    primary_key = ["Division", "EntryID"]  # this endpoint has no ID field
 
 
 class CRMAccountClassifications(ExactOtherStream):

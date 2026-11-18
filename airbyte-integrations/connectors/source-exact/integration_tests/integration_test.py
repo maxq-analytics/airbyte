@@ -15,6 +15,8 @@ from source_exact.streams import (
     SyncPayrollEmployments,
     SyncProjectProjects,
     SyncSalesInvoiceSalesInvoices,
+    SyncSubscriptionSubscriptionLines,
+    SyncSubscriptionSubscriptions,
 )
 
 from airbyte_cdk.entrypoint import launch
@@ -110,4 +112,30 @@ def test_sales_invoice(config):
     source = SourceExact()
     output: EntrypointOutput = read(source, config, configured_catalog)
 
+    assert len(output.records) >= 0
+
+
+def test_subscriptions(config):
+    stream = SyncSubscriptionSubscriptions(config).as_airbyte_stream()
+    stream_configured = ConfiguredAirbyteStream(
+        stream=stream, sync_mode=SyncMode.full_refresh, destination_sync_mode=DestinationSyncMode.overwrite
+    )
+    configured_catalog = ConfiguredAirbyteCatalog(streams=[stream_configured])
+    source = SourceExact()
+    output: EntrypointOutput = read(source, config, configured_catalog)
+
+    assert not output.errors
+    assert len(output.records) >= 0
+
+
+def test_subscription_lines(config):
+    stream = SyncSubscriptionSubscriptionLines(config).as_airbyte_stream()
+    stream_configured = ConfiguredAirbyteStream(
+        stream=stream, sync_mode=SyncMode.full_refresh, destination_sync_mode=DestinationSyncMode.overwrite
+    )
+    configured_catalog = ConfiguredAirbyteCatalog(streams=[stream_configured])
+    source = SourceExact()
+    output: EntrypointOutput = read(source, config, configured_catalog)
+
+    assert not output.errors
     assert len(output.records) >= 0

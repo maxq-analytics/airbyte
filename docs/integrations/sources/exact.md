@@ -49,11 +49,15 @@ records. All other services are limited to 60 records per page.
     - sales_order_sales_order_lines
     - sales_order_sales_orders
     - sales_sales_price_list_volume_discounts
+    - subscription_subscriptions
+    - subscription_subscription_lines
 - **CRM**
     - account_classifications
     - account_classification_names
 - **PROJECT**
   - employment_internal_rates
+- **HRM**
+  - divisions (all divisions the user can access, read once; primary key `Code`)
 
 ## Features
 
@@ -64,8 +68,12 @@ records. All other services are limited to 60 records per page.
 
 ### Incremental Sync
 
-All endpoints support incremental sync. Regular endpoints use the `Modified` field. Sync endpoints use the `Timestamp`
+Regular endpoints use the `Modified` field. Endpoints without a `Modified` field are full refresh only: `financial_gl_account_classification_mappings`, `financial_reporting_balance`, `financial_receivables_list` and `openingbalance_current_year_after_entry`. Sync endpoints use the `Timestamp`
 field. Note, that this `Timestamp` represents a row version and is not related to a natural timestamp.
+
+### Primary keys
+
+Sync endpoints use `Division` + `ID` (`subscription_subscriptions`: `Division` + `EntryID`). `Timestamp` is only the cursor: it changes on every edit, so it can't identify a record. Regular endpoints use `ID`, except `divisions` (`Code`), `financial_receivables_list` (`HID`) and `openingbalance_current_year_after_entry` (`Division` + `ReportingYear` + `GLAccount`).
 
 ## Limitations
 
@@ -149,5 +157,6 @@ at [Exact Knowledge Base](https://support.exactonline.com/community/s/knowledge-
 | 0.0.9   | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Addition project_employment_internal_rates                               |
 | 0.0.10  | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Correct endpoint for project_employment_internal_rates                   |
 | 0.1.0   | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Update changelog and project files to set version 0.1.0                  |
+| 1.0.0   | 2026-11-18 | [TBD](https://github.com/airbytehq/airbyte/pull/TBD)     | Sync streams keyed on `Division` + `ID` instead of `Timestamp`; endpoints without `Modified` are full refresh only; add Subscription, SubscriptionLines and Divisions streams. See the [migration guide](/integrations/sources/exact-migrations). |
 
 

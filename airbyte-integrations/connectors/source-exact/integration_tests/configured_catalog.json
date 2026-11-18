@@ -4,15 +4,71 @@
       "stream": {
         "name": "sync_subscription_subscriptions",
         "json_schema": {},
-        "supported_sync_modes": ["full_refresh", "incremental"],
+        "supported_sync_modes": [
+          "full_refresh",
+          "incremental"
+        ],
         "source_defined_cursor": true,
-        "default_cursor_field": ["Timestamp"],
-        "source_defined_primary_key": [["Timestamp"]]
+        "default_cursor_field": [
+          "Timestamp"
+        ],
+        "source_defined_primary_key": [
+          [
+            "Division"
+          ],
+          [
+            "EntryID"
+          ]
+        ]
       },
       "sync_mode": "incremental",
-      "destination_sync_mode": "overwrite",
-      "cursor_field": ["Timestamp"],
-      "primary_key": [["Timestamp"]]
+      "destination_sync_mode": "append_dedup",
+      "cursor_field": [
+        "Timestamp"
+      ],
+      "primary_key": [
+        [
+          "Division"
+        ],
+        [
+          "EntryID"
+        ]
+      ]
+    },
+    {
+      "stream": {
+        "name": "sync_subscription_subscription_lines",
+        "json_schema": {},
+        "supported_sync_modes": [
+          "full_refresh",
+          "incremental"
+        ],
+        "source_defined_cursor": true,
+        "default_cursor_field": [
+          "Timestamp"
+        ],
+        "source_defined_primary_key": [
+          [
+            "Division"
+          ],
+          [
+            "ID"
+          ]
+        ]
+      },
+      "sync_mode": "incremental",
+      "destination_sync_mode": "append_dedup",
+      "cursor_field": [
+        "Timestamp"
+      ],
+      "primary_key": [
+        [
+          "Division"
+        ],
+        [
+          "ID"
+        ]
+      ]
     }
   ]
 }

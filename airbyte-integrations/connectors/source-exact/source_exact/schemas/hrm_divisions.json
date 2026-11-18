@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "HRMDivisions",
+  "additionalProperties": true,
+  "properties": {
+    "Code": {
+      "description": "Division code (primary key)",
+      "type": ["null", "integer"]
+    },
+    "ArchiveDate": {
+      "description": "Date on which the division was archived",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "BlockingStatus": {
+      "description": "Blocking status of the division",
+      "type": ["null", "integer"]
+    },
+    "Class_01": {
+      "description": "Division classification 1",
+      "type": ["null", "string"]
+    },
+    "Class_02": {
+      "description": "Division classification 2",
+      "type": ["null", "string"]
+    },
+    "Class_03": {
+      "description": "Division classification 3",
+      "type": ["null", "string"]
+    },
+    "Class_04": {
+      "description": "Division classification 4",
+      "type": ["null", "string"]
+    },
+    "Class_05": {
+      "description": "Division classification 5",
+      "type": ["null", "string"]
+    },
+    "Country": {
+      "description": "Country of the division",
+      "type": ["null", "string"]
+    },
+    "CountryDescription": {
+      "description": "Description of the country",
+      "type": ["null", "string"]
+    },
+    "Created": {
+      "description": "Creation date",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Creator": {
+      "description": "ID of creator",
+      "type": ["null", "string"]
+    },
+    "CreatorFullName": {
+      "description": "Name of creator",
+      "type": ["null", "string"]
+    },
+    "Currency": {
+      "description": "Default currency of the division",
+      "type": ["null", "string"]
+    },
+    "CurrencyDescription": {
+      "description": "Description of the default currency",
+      "type": ["null", "string"]
+    },
+    "Customer": {
+      "description": "ID of the owner account of the division",
+      "type": ["null", "string"]
+    },
+    "CustomerCode": {
+      "description": "Code of the owner account",
+      "type": ["null", "string"]
+    },
+    "CustomerName": {
+      "description": "Name of the owner account",
+      "type": ["null", "string"]
+    },
+    "Description": {
+      "description": "Description of the division",
+      "type": ["null", "string"]
+    },
+    "HID": {
+      "description": "Number that identifies the administration",
+      "type": ["null", "integer"]
+    },
+    "Main": {
+      "description": "True for the main (hosting) division",
+      "type": ["null", "boolean"]
+    },
+    "Modified": {
+      "description": "Last modified date",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Modifier": {
+      "description": "ID of modifier",
+      "type": ["null", "string"]
+    },
+    "ModifierFullName": {
+      "description": "Name of modifier",
+      "type": ["null", "string"]
+    },
+    "OBNumber": {
+      "description": "Dutch VAT number used for tax returns",
+      "type": ["null", "string"]
+    },
+    "SiretNumber": {
+      "description": "French company number",
+      "type": ["null", "string"]
+    },
+    "StartDate": {
+      "description": "Date the division started",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Status": {
+      "description": "0 = active, 1 = archived",
+      "type": ["null", "integer"]
+    },
+    "TaxOfficeNumber": {
+      "description": "Tax office number",
+      "type": ["null", "string"]
+    },
+    "TaxReferenceNumber": {
+      "description": "Tax reference number",
+      "type": ["null", "string"]
+    },
+    "TemplateCode": {
+      "description": "Code of the template the division was created from",
+      "type": ["null", "string"]
+    },
+    "VATNumber": {
+      "description": "VAT number of the division",
+      "type": ["null", "string"]
+    },
+    "Website": {
+      "description": "Website of the division",
+      "type": ["null", "string"]
+    }
+  }
+}

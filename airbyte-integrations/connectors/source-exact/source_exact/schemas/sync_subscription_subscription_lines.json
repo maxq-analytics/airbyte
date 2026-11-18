@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "SyncSubscriptionSubscriptionLines",
+  "additionalProperties": true,
+  "properties": {
+    "Timestamp": {
+      "description": "Row version used to retrieve new or changed records",
+      "type": ["null", "integer"]
+    },
+    "AmountDC": {
+      "description": "Amount in the default currency of the company",
+      "type": ["null", "number"]
+    },
+    "AmountFC": {
+      "description": "Amount in the currency of the transaction",
+      "type": ["null", "number"]
+    },
+    "Costcenter": {
+      "description": "Cost center",
+      "type": ["null", "string"]
+    },
+    "Costunit": {
+      "description": "Cost unit",
+      "type": ["null", "string"]
+    },
+    "Description": {
+      "description": "Description of the subscription line",
+      "type": ["null", "string"]
+    },
+    "Discount": {
+      "description": "Discount percentage",
+      "type": ["null", "number"]
+    },
+    "Division": {
+      "description": "Division code",
+      "type": ["null", "integer"]
+    },
+    "EntryID": {
+      "description": "ID of the subscription this line belongs to",
+      "type": ["null", "string"]
+    },
+    "FromDate": {
+      "description": "Start date of the subscription line",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "ID": {
+      "description": "Primary key",
+      "type": ["null", "string"]
+    },
+    "Item": {
+      "description": "ID of the item",
+      "type": ["null", "string"]
+    },
+    "ItemDescription": {
+      "description": "Description of the item",
+      "type": ["null", "string"]
+    },
+    "LineNumber": {
+      "description": "Line number",
+      "type": ["null", "integer"]
+    },
+    "LineType": {
+      "description": "Line type: 1 = recurring, 2 = one-time",
+      "type": ["null", "integer"]
+    },
+    "LineTypeDescription": {
+      "description": "Description of the line type",
+      "type": ["null", "string"]
+    },
+    "Modified": {
+      "description": "Last modified date",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "NetPrice": {
+      "description": "Net price in the currency of the transaction",
+      "type": ["null", "number"]
+    },
+    "Notes": {
+      "description": "Remarks",
+      "type": ["null", "string"]
+    },
+    "Quantity": {
+      "description": "Quantity",
+      "type": ["null", "number"]
+    },
+    "SubscriptionNumber": {
+      "description": "Number of the subscription",
+      "type": ["null", "integer"]
+    },
+    "ToDate": {
+      "description": "End date of the subscription line",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "UnitCode": {
+      "description": "Unit code",
+      "type": ["null", "string"]
+    },
+    "UnitDescription": {
+      "description": "Unit description",
+      "type": ["null", "string"]
+    },
+    "UnitPrice": {
+      "description": "Unit price in the currency of the transaction",
+      "type": ["null", "number"]
+    },
+    "VATAmountFC": {
+      "description": "VAT amount in the currency of the transaction",
+      "type": ["null", "number"]
+    },
+    "VATCode": {
+      "description": "VAT code",
+      "type": ["null", "string"]
+    },
+    "VATCodeDescription": {
+      "description": "Description of the VAT code",
+      "type": ["null", "string"]
+    }
+  }
+}
