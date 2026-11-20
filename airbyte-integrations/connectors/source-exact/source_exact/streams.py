@@ -334,6 +334,22 @@ class BudgetBudgets(ExactOtherStream):
 
     endpoint = "budget/Budgets"
 
+class CRMAccountClassifications(ExactOtherStream):
+    """Stream to sync the endpoint `crm/AccountClassifications`"""
+
+    endpoint = "crm/AccountClassifications"
+
+
+class CRMAccountClassificationNames(ExactOtherStream):
+    """Stream to sync the endpoint `crm/AccountClassificationNames`"""
+
+    endpoint = "crm/AccountClassificationNames"
+
+
+class ProjectInvoiceTerms(ExactOtherStream):
+    """Stream to sync the endpoint `project/ProjectInvoiceTerms`"""
+
+    endpoint = "project/InvoiceTerms"
 
 class FinancialGLAccountClassificationMappings(ExactOtherStream):
     """Stream to sync to the endpoint `financial/GLAccountClassificationMappings`"""
@@ -647,22 +663,6 @@ class SyncSubscriptionSubscriptions(ExactSyncStream):
     endpoint = "sync/Subscription/Subscriptions"
 
 
-class CRMAccountClassifications(ExactOtherStream):
-    """Stream to sync the endpoint `crm/AccountClassifications`"""
-
-    endpoint = "crm/AccountClassifications"
-
-
-class CRMAccountClassificationNames(ExactOtherStream):
-    """Stream to sync the endpoint `crm/AccountClassificationNames`"""
-
-    endpoint = "crm/AccountClassificationNames"
-
-
-class ProjectInvoiceTerms(ExactOtherStream):
-    """Stream to sync the endpoint `project/ProjectInvoiceTerms`"""
-
-    endpoint = "project/InvoiceTerms"
 
 
 class RequestBodyException(Exception):
