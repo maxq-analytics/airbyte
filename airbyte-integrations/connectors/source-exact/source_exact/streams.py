@@ -664,6 +664,7 @@ class SyncSubscriptionSubscriptionLines(ExactSyncStream):
     """Stream to sync the endpoint `sync/Subscription/SubscriptionLines`"""
 
     endpoint = "sync/Subscription/SubscriptionLines"
+    primary_key = "ID"
 
 
 class RequestBodyException(Exception):
