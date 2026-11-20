@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "SyncSubscriptionSubscriptions",
+  "additionalProperties": true,
+  "properties": {
+    "Timestamp": {
+      "description": "Timestamp",
+      "type": ["null", "integer"]
+    },
+    "BlockEntry": {},
+    "CancellationDate": {},
+    "ClassificationCode": {},
+    "ClassificationDescription": {},
+    "Created": {
+      "description": "Creation date",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Creator": {
+      "description": "User ID of creator",
+      "type": ["null", "string"]
+    },
+    "CreatorFullName": {
+      "description": "Name of creator",
+      "type": ["null", "string"]
+    },
+    "Currency": {
+      "description": "Currency for the invoice. Default this is the currency of the administration",
+      "type": ["null", "string"]
+    },
+    "CustomerPONumber": {},
+    "Description": {
+      "description": "Description. Can be different for header and lines",
+      "type": ["null", "string"]
+    },
+    "Division": {
+      "description": "Division code",
+      "type": ["null", "integer"]
+    },
+    "EndDate": {},
+    "InvoiceDay": {
+      "description": "Official date for the invoice. When the invoice is entered it's equal to the field 'EntryDate'. During the printing process the invoice date can be entered",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "InvoiceTo": {
+      "description": "Reference to the Customer who will receive the invoice",
+      "type": ["null", "string"]
+    },
+    "InvoiceToContactPerson": {
+      "description": "Reference to the Contact person of the customer who will receive the invoice",
+      "type": ["null", "string"]
+    },
+    "InvoiceToContactPersonFullName": {
+      "description": "Name of the contact person of the customer who will receive the invoice",
+      "type": ["null", "string"]
+    },
+    "InvoiceToName": {
+      "description": "Name of the customer who will receive the invoice",
+      "type": ["null", "string"]
+    },
+    "InvoiceStartDate": {},
+    "Modified": {
+      "description": "Last modified date",
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Modifier": {
+      "description": "User ID of modifier",
+      "type": ["null", "string"]
+    },
+    "ModifierFullName": {
+      "description": "Name of modifier",
+      "type": ["null", "string"]
+    },
+    "Notes": {
+      "description": "Extra notes",
+      "type": ["null", "string"]
+    },
+    "Number": {},
+    "OrderedBy": {
+      "description": "Customer who ordered the invoice",
+      "type": ["null", "string"]
+    },
+    "OrderedByContactPerson": {
+      "description": "Contact person of customer who ordered the invoice",
+      "type": ["null", "string"]
+    },
+    "OrderedByContactPersonFullName": {
+      "description": "Name of contact person of customer who ordered the invoice",
+      "type": ["null", "string"]
+    },
+    "OrderedByName": {
+      "description": "Name of customer who ordered the invoice",
+      "type": ["null", "string"]
+    },
+    "PaymentCondition": {
+      "description": "The payment condition used for due date and discount calculation",
+      "type": ["null", "string"]
+    },
+    "PaymentConditionDescription": {
+      "description": "Description of PaymentCondition",
+      "type": ["null", "string"]
+    },
+    "Printed": {},
+    "Project": {
+      "description": "The project to which the sales transaction line is linked. The project can be different per line. Sometimes also the project in the header is filled although this is not really used",
+      "type": ["null", "string"]
+    },
+    "ReasonCancelled": {},
+    "ReasonCancelledCode": {},
+    "ReasonCancelledDescription": {},
+    "StartDate": {},
+    "SubscriptionType": {},
+    "SubscriptionTypeCode": {},
+    "SubscriptionTypeDescription": {}
+  }
+}
