@@ -4,11 +4,11 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "source-exact"
-version = "0.1.0"
+version = "0.1.1"
 
 [tool.poetry]
 name = "source-exact"
-version = "0.1.0"
+version = "0.1.1"
 description = "Source connector for Exact Online"
 authors = ["Jeroen de Vries <jeroen@maildevries.eu>"]
 license = "MIT"
@@ -39,4 +39,3 @@ include = [
     # Run `poe` or `poe --help` to see the list of available tasks.
     "${POE_GIT_DIR}/poe-tasks/poetry-connector-tasks.toml",
 ]
-

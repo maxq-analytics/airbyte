@@ -407,6 +407,7 @@ class SyncCRMAccounts(ExactSyncStream):
     """Stream to sync the endpoint `sync/CRM/Accounts`"""
 
     endpoint = "sync/CRM/Accounts"
+    primary_key = "ID"
 
 
 class SyncCRMAddresses(ExactSyncStream):
@@ -455,18 +456,21 @@ class SyncFinancialGLAccounts(ExactSyncStream):
     """Stream to sync the endpoint `sync/Financial/GLAccounts`"""
 
     endpoint = "sync/Financial/GLAccounts"
+    primary_key = "ID"
 
 
 class SyncFinancialGLClassifications(ExactSyncStream):
     """Stream to sync the endpoint `sync/Financial/GLClassifications`"""
 
     endpoint = "sync/Financial/GLClassifications"
+    primary_key = "ID"
 
 
 class SyncFinancialTransactionLines(ExactSyncStream):
     """Stream to sync the endpoint `sync/Financial/TransactionLines`"""
 
     endpoint = "sync/Financial/TransactionLines"
+    primary_key = "EntryID"
 
 
 class SyncHRMLeaveAbsenceHoursByDay(ExactSyncStream):
