@@ -6,12 +6,12 @@ from typing import Any, Iterable, List, Mapping, MutableMapping, Optional
 
 import pendulum
 import requests
+from pendulum.datetime import DateTime
+
 from airbyte_cdk.models import SyncMode
 from airbyte_cdk.sources.streams import CheckpointMixin
 from airbyte_cdk.sources.streams.core import StreamData
 from airbyte_cdk.sources.streams.http import HttpStream
-from pendulum.datetime import DateTime
-
 from source_exact.api import ExactAPI
 
 
@@ -334,6 +334,7 @@ class BudgetBudgets(ExactOtherStream):
 
     endpoint = "budget/Budgets"
 
+
 class CRMAccountClassifications(ExactOtherStream):
     """Stream to sync the endpoint `crm/AccountClassifications`"""
 
@@ -350,6 +351,7 @@ class ProjectInvoiceTerms(ExactOtherStream):
     """Stream to sync the endpoint `project/ProjectInvoiceTerms`"""
 
     endpoint = "project/InvoiceTerms"
+
 
 class FinancialGLAccountClassificationMappings(ExactOtherStream):
     """Stream to sync to the endpoint `financial/GLAccountClassificationMappings`"""
@@ -651,12 +653,6 @@ class SyncSalesOrderSalesOrderLines(ExactSyncStream):
     endpoint = "sync/SalesOrder/SalesOrderLines"
 
 
-class SyncSubscriptionSubscriptionLines(ExactSyncStream):
-    """Stream to sync the endpoint `sync/Subscription/SubscriptionLines`"""
-
-    endpoint = "sync/Subscription/SubscriptionLines"
-
-
 class SyncSubscriptionSubscriptions(ExactSyncStream):
     """Stream to sync the endpoint `sync/Subscription/Subscriptions`"""
 
@@ -664,6 +660,10 @@ class SyncSubscriptionSubscriptions(ExactSyncStream):
     primary_key = "EntryID"
 
 
+class SyncSubscriptionSubscriptionLines(ExactSyncStream):
+    """Stream to sync the endpoint `sync/Subscription/SubscriptionLines`"""
+
+    endpoint = "sync/Subscription/SubscriptionLines"
 
 
 class RequestBodyException(Exception):
