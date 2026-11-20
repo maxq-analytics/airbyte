@@ -661,6 +661,7 @@ class SyncSubscriptionSubscriptions(ExactSyncStream):
     """Stream to sync the endpoint `sync/Subscription/Subscriptions`"""
 
     endpoint = "sync/Subscription/Subscriptions"
+    primary_key = "EntryID"
 
 
 
