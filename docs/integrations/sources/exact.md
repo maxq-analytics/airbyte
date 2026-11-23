@@ -77,7 +77,9 @@ Sync endpoints use `Division` + `ID` (`subscription_subscriptions`: `Division` +
 
 ## Limitations
 
-Extracting multiple divisions is not yet supported
+- Multiple divisions are supported: list their codes in `divisions`.
+- Endpoints without a `Modified` field are full refresh only (see Incremental Sync).
+- Exact allows 60 requests per minute, so the first sync of large streams (e.g. transaction lines) takes time.
 
 ## Authentication
 
@@ -144,8 +146,8 @@ at [Exact Knowledge Base](https://support.exactonline.com/community/s/knowledge-
 
 ## Changelog
 
-| Version | Date       | Pull Request                                         | Subject           |
-|---------|------------|------------------------------------------------------|-------------------|
-| 0.0.1   | 2026-11-23 | [TBD](https://github.com/airbytehq/airbyte/pull/TBD) | New Source: Exact |
+| Version | Date       | Pull Request                                             | Subject           |
+|---------|------------|----------------------------------------------------------|-------------------|
+| 0.0.1   | 2026-11-23 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | New Source: Exact |
 
 
