@@ -159,5 +159,6 @@ at [Exact Knowledge Base](https://support.exactonline.com/community/s/knowledge-
 | 0.0.9   | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Addition project_employment_internal_rates                               |
 | 0.0.10  | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Correct endpoint for project_employment_internal_rates                   |
 | 0.1.0   | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Update changelog and project files to set version 0.1.0                  |
+| 0.1.0   | 2026-11-23 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Add Subscriptions, SubscriptionLines and Divisions streams; sync streams keyed on `Division` + `ID`; endpoints without `Modified` are full refresh only |
 
 
