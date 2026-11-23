@@ -144,19 +144,8 @@ at [Exact Knowledge Base](https://support.exactonline.com/community/s/knowledge-
 
 ## Changelog
 
-| Version | Date       | Pull Request                                             | Subject                                                                  |
-|---------|------------|----------------------------------------------------------|--------------------------------------------------------------------------|
-| 0.0.1   | 2022-12-14 | [20480](https://github.com/airbytehq/airbyte/pull/20480) | New Source: Exact                                                        | 
-| 0.0.2   | 2025-01-01 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Update of source to airbyte-cdk v.6                                      |
-| 0.0.3   | 2025-07-07 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Update of stream FinancialReceivablesList to have a working cursor field |
-| 0.0.4   | 2025-10-15 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | ...                                                                      |
-| 0.0.5   | 2025-12-23 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Add schemas sync_logistic_items and sync_payroll_employment_salaries     |
-| 0.0.6   | 2025-12-23 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Add new streams to code                                                  |
-| 0.0.7   | 2025-12-23 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Add new streams to class SourceExact                                     |
-| 0.0.8   | 2025-12-23 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Schema was incorrect for sync logistics items                            |
-| 0.0.9   | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Addition project_employment_internal_rates                               |
-| 0.0.10  | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Correct endpoint for project_employment_internal_rates                   |
-| 0.1.0   | 2026-01-08 | [61551](https://github.com/airbytehq/airbyte/pull/61551) | Update changelog and project files to set version 0.1.0                  |
-| 1.0.0   | 2026-11-18 | [TBD](https://github.com/airbytehq/airbyte/pull/TBD)     | Sync streams keyed on `Division` + `ID` instead of `Timestamp`; endpoints without `Modified` are full refresh only; add Subscription, SubscriptionLines and Divisions streams. See the [migration guide](/integrations/sources/exact-migrations). |
+| Version | Date       | Pull Request                                         | Subject           |
+|---------|------------|------------------------------------------------------|-------------------|
+| 0.0.1   | 2026-11-23 | [TBD](https://github.com/airbytehq/airbyte/pull/TBD) | New Source: Exact |
 
 

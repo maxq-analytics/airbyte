@@ -2,7 +2,7 @@ data:
   ab_internal:
     ql: 100
     sl: 100
-  dockerImageTag: "1.0.0"
+  dockerImageTag: "0.0.1"
   dockerRepository: airbyte/source-exact
   connectorType: source
   connectorSubtype: api
@@ -20,33 +20,6 @@ data:
     pypi:
       enabled: false
       packageName: airbyte-source-exact
-  releases:
-    breakingChanges:
-      1.0.0:
-        message: "Sync streams now use `Division` + `ID` as primary key instead of `Timestamp` (a row version that changes on every edit, which kept every edited record twice in deduped tables). `openingbalance_current_year_after_entry` uses `Division` + `ReportingYear` + `GLAccount`. Streams without a `Modified` field are now full refresh only. Refresh the impacted streams after upgrading."
-        upgradeDeadline: "2026-12-18"
-        scopedImpact:
-          - scopeType: stream
-            impactedScopes:
-              - "sync_crm_accounts"
-              - "sync_deleted"
-              - "sync_financial_gl_accounts"
-              - "sync_financial_gl_classifications"
-              - "sync_financial_transaction_lines"
-              - "sync_hrm_schedule_entries"
-              - "sync_hrm_schedules"
-              - "sync_logistics_items"
-              - "sync_payroll_employees"
-              - "sync_payroll_employment_organisations"
-              - "sync_payroll_employment_salaries"
-              - "sync_payroll_employments"
-              - "sync_project_projects"
-              - "sync_project_time_cost_transactions"
-              - "sync_sales_invoice_sales_invoices"
-              - "openingbalance_current_year_after_entry"
-              - "financial_gl_account_classification_mappings"
-              - "financial_receivables_list"
-              - "financial_reporting_balance"
   tags:
     - language:python
     - cdk:python

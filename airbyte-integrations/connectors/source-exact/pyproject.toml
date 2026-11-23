@@ -4,11 +4,11 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "source-exact"
-version = "1.0.0"
+version = "0.0.1"
 
 [tool.poetry]
 name = "source-exact"
-version = "1.0.0"
+version = "0.0.1"
 description = "Source connector for Exact Online"
 authors = ["Jeroen de Vries <jeroen@maildevries.eu>"]
 license = "MIT"
