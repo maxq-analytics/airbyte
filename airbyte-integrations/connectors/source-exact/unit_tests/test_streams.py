@@ -6,7 +6,8 @@ from unittest.mock import MagicMock
 
 import pytest
 import requests
-from source_exact.streams import ExactOtherStream, ExactSyncStream
+from airbyte_cdk.models import SyncMode
+from source_exact.streams import ExactOtherStream, ExactSyncStream, HRMDivisions
 
 
 class MyTestExactSyncStream(ExactSyncStream):
@@ -319,3 +320,10 @@ def test_parse_item__type_casting(config_oauth: dict):
 #     stream.cursor_field = "Modified"
 #
 #     assert stream._get_param_filter("2022-12-12T00:00:00+00:00") == "Modified gt datetime'2022-12-12T01:00:00'"
+
+
+def test_divisions_called_once(config_oauth: dict):
+    stream = HRMDivisions({**config_oauth, "divisions": [1, 2, 3]})
+
+    assert stream.stream_slices(sync_mode=SyncMode.full_refresh) == [{"division": 1}]
+    assert stream.as_airbyte_stream().source_defined_primary_key == [["Code"]]
