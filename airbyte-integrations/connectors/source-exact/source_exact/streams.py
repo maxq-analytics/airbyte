@@ -2,6 +2,7 @@
 
 import re
 from abc import ABC
+from functools import cached_property
 from typing import Any, Iterable, List, Mapping, MutableMapping, Optional
 
 import pendulum
@@ -322,11 +323,17 @@ class ExactOtherStream(ExactStream):
     Exact non-sync endpoints paginate by 60 items.
     Often they denote regular entities which have an ID as primary key,
     and modified field to get changes since last sync.
+
+    Some endpoints (e.g. GLAccountClassificationMappings) have no Modified field,
+    so these streams are full refresh only ([] = no cursor).
     """
 
     state_checkpoint_interval = 60
     primary_key = "ID"
-    cursor_field = "Modified"
+
+    @cached_property
+    def cursor_field(self) -> str | list[str]:
+        return "Modified" if "Modified" in self.get_json_schema()["properties"] else []
 
 
 class BudgetBudgets(ExactOtherStream):
@@ -394,6 +401,7 @@ class OpeningbalanceCurrentYearAfterEntry(ExactOtherStream):
     """Stream to sync the endpoint `openingbalance/CurrentYear/AfterEntry`"""
 
     endpoint = "openingbalance/CurrentYear/AfterEntry"
+    primary_key = ["Division", "ReportingYear", "GLAccount"]
 
 
 class PayrollActiveEmployments(ExactOtherStream):
