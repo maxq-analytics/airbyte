@@ -91,6 +91,8 @@ class SourceExact(AbstractSource):
             SyncSalesInvoiceSalesInvoices(config),
             SyncHRMSchedules(config),
             SyncHRMScheduleEntries(config),
+            SyncSubscriptionSubscriptions(config),
+            SyncSubscriptionSubscriptionLines(config),
         ]
 
     def discover(self, logger: logging.Logger, config) -> AirbyteCatalog:
