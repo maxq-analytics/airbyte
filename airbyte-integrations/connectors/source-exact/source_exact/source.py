@@ -14,6 +14,7 @@ from source_exact.streams import (
     FinancialReceivablesList,
     FinancialReportingBalance,
     HRMDepartments,
+    HRMDivisions,
     OpeningbalanceCurrentYearAfterEntry,
     PayrollActiveEmployments,
     ProjectEmploymentInternalRates,
@@ -33,6 +34,8 @@ from source_exact.streams import (
     SyncProjectProjects,
     SyncProjectTimeCostTransactions,
     SyncSalesInvoiceSalesInvoices,
+    SyncSubscriptionSubscriptions,
+    SyncSubscriptionSubscriptionLines
 )
 
 
@@ -68,6 +71,7 @@ class SourceExact(AbstractSource):
             FinancialReceivablesList(config),
             FinancialReportingBalance(config),
             HRMDepartments(config),
+            HRMDivisions(config),
             OpeningbalanceCurrentYearAfterEntry(config),
             PayrollActiveEmployments(config),
             ProjectEmploymentInternalRates(config),

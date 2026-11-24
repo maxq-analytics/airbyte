@@ -379,6 +379,17 @@ class HRMDepartments(ExactOtherStream):
     endpoint = "hrm/Departments"
 
 
+class HRMDivisions(ExactOtherStream):
+    """Stream to sync the endpoint `hrm/Divisions` (all divisions the user can access)"""
+
+    endpoint = "hrm/Divisions"
+    primary_key = "Code"
+
+    def stream_slices(self, **kwargs) -> Iterable[Optional[Mapping[str, Any]]]:
+        # Every division returns the same list, so call it once
+        return [{"division": self._divisions[0]}]
+
+
 class OpeningbalanceCurrentYearAfterEntry(ExactOtherStream):
     """Stream to sync the endpoint `openingbalance/CurrentYear/AfterEntry`"""
 
