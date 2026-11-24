@@ -114,7 +114,7 @@ class ExactStream(HttpStream, CheckpointMixin, ABC):
 
         division = str(stream_slice["division"])
         state = self._state_per_division.get(division, {})
-        cursor_value = state.get(self.cursor_field)
+        cursor_value = state.get(self.cursor_field) if self.cursor_field else None
 
         if cursor_value:
             params["$filter"] = self._get_param_filter(cursor_value)
